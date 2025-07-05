@@ -22,14 +22,14 @@ app.post("/register", async (request, response) => {
 
     // Validação básica
     if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-        return response.status(400).json({ error: "Email inválido ou ausente." });
+        response.status(400).json({ error: "Email inválido ou ausente." });
     }
 
     try {
         // Verifica se o email já está registrado
         const existing = await registerRepository.findByEmail(email);
         if (existing) {
-            return response.status(409).json({ error: "Email já está registrado." });
+            response.status(409).json({ error: "Email já está registrado." });
         }
 
         // Cria novo registro com UUID
@@ -40,11 +40,11 @@ app.post("/register", async (request, response) => {
             subject: "Bem Vindo ao EaseForm",
             html: registerHtml({ easeId: saved.easeId, email: saved.email, endPoint: "https://easeform.onrender.com/" + saved.email }),
         });
-        return response.json({ message: "E-mail registado com sucesso, verifique o seu e-mail.", });
+        response.json({ message: "E-mail registado com sucesso, verifique o seu e-mail.", });
 
     } catch (error) {
         console.error("Erro ao registrar email:", error);
-        return response.status(500).json({ error: "Erro interno no servidor." });
+        response.status(500).json({ error: "Erro interno no servidor." });
     }
 });
 
