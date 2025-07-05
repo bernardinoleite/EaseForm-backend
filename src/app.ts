@@ -16,7 +16,7 @@ app.get('/ping', (req, res) => {
     res.send('pong!');
 });
 
-app.post("/quickform/register", async (request, response) => {
+app.post("/register", async (request, response) => {
     const { email } = request.body;
     console.log(email);
 
@@ -35,10 +35,10 @@ app.post("/quickform/register", async (request, response) => {
         // Cria novo registro com UUID
         const saved = await registerRepository.create(email);
         await mailTransport.sendMail({
-            from: `QuickForm <${process.env.GMAIL_USER}>`,
+            from: `EaseForm <${process.env.GMAIL_USER}>`,
             to: email,
-            subject: "Bem Vindo ao QuickForm",
-            html: registerHtml({ quickId: saved.quickId, email: saved.email, endPoint: "http://localhost:2908/quickform/" + saved.email }),
+            subject: "Bem Vindo ao EaseForm",
+            html: registerHtml({ easeId: saved.easeId, email: saved.email, endPoint: "https://easeform.onrender.com/" + saved.email }),
         });
         return response.json({ message: "E-mail registado com sucesso, verifique o seu e-mail.", });
 
@@ -48,7 +48,7 @@ app.post("/quickform/register", async (request, response) => {
     }
 });
 
-app.post("/quickform/:email", async (request, response) => {
+app.post("/:email", async (request, response) => {
     const { email } = request.params;
     const { _next, _subject, ...body } = request.body;
 
@@ -61,7 +61,7 @@ app.post("/quickform/:email", async (request, response) => {
 
     let redirect = request.get("referer");
 
-    const origin = request.get("referer") || request.get("origin") || "https://quickform.co";
+    const origin = request.get("referer") || request.get("origin") || "https://easeform.co";
 
     if (_next) {
         redirect = _next;
@@ -71,7 +71,7 @@ app.post("/quickform/:email", async (request, response) => {
 
     try {
         await mailTransport.sendMail({
-            from: `QuickForm <${process.env.GMAIL_USER}>`,
+            from: `easeForm <${process.env.GMAIL_USER}>`,
             to: email,
             subject: _subject || "📨 Novo envio de formulário",
             html,

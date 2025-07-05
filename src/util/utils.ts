@@ -16,7 +16,7 @@ export function returnHtml({ origin, fieldsHTML }) {
     <html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
-        <title>QuickForm</title>
+        <title>EaseForm</title>
         <style>
             body { font-family: Arial, sans-serif; background-color: #f9fafb; margin: 0; padding: 20px; }
             .gradient-bg { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
@@ -34,7 +34,7 @@ export function returnHtml({ origin, fieldsHTML }) {
         <div style="max-width: 600px; margin: auto;">
             <div class="header">
                 <h1>📬 Formulário Recebido</h1>
-                <p>Você recebeu um novo envio via QuickForm</p>
+                <p>Você recebeu um novo envio via EaseForm</p>
             </div>
 
             <div style="margin: 20px 0;">
@@ -46,7 +46,7 @@ export function returnHtml({ origin, fieldsHTML }) {
             </div>
 
             <div class="footer" style="background-color: #1f2937; text-align: center; font-size: 12px;">
-                <p>© 2023 QuickForm. Todos os direitos reservados.</p>
+                <p>© 2023 EaseForm. Todos os direitos reservados.</p>
                 <p>Este é um email automático, por favor não responda.</p>
             </div>
         </div>
@@ -77,14 +77,14 @@ export function fieldsHTML(body: any) {
 }
 
 
-export function registerHtml({ quickId, email, endPoint }) {
+export function registerHtml({ easeId, email, endPoint }) {
     return `<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Email Registrado com Sucesso | QuickForm</title>
+    <title>Email Registrado com Sucesso | EaseForm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
@@ -118,7 +118,7 @@ export function registerHtml({ quickId, email, endPoint }) {
                     <div class="bg-white bg-opacity-20 p-3 rounded-lg mr-4">
                         <i class="fas fa-check text-xl"></i>
                     </div>
-                    <h1 class="text-2xl font-bold">QuickForm</h1>
+                    <h1 class="text-2xl font-bold">EaseForm</h1>
                 </div>
                 <div class="text-white bg-black bg-opacity-20 px-3 py-1 rounded-full text-sm font-medium">
                     <i class="fas fa-user-check mr-1"></i> Registro de Email
@@ -169,8 +169,8 @@ export function registerHtml({ quickId, email, endPoint }) {
                             <i class="fas fa-key text-sm"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-gray-700">${quickId}</h3>
-                            <p class="text-gray-600" id="quickId">carregando...</p>
+                            <h3 class="font-bold text-gray-700">${easeId}</h3>
+                            <p class="text-gray-600" id="easeId">carregando...</p>
                         </div>
                     </div>
                 </div>
@@ -178,9 +178,9 @@ export function registerHtml({ quickId, email, endPoint }) {
 
             <!-- Call to Action -->
             <div class="gradient-bg text-white p-6 rounded-lg text-center">
-                <h3 class="text-xl font-bold mb-2">Bem-vindo ao QuickForm!</h3>
+                <h3 class="text-xl font-bold mb-2">Bem-vindo ao EaseForm!</h3>
                 <p class="mb-4 opacity-90">Agora você pode usar este email para receber formulários.</p>
-                <a href="https://quickform.co"
+                <a href="https://easeform.onrender.com"
                     class="inline-block bg-white text-primary font-bold py-2 px-6 rounded-lg hover:bg-gray-100 transition">
                     Ir para o Site
                 </a>
@@ -189,7 +189,7 @@ export function registerHtml({ quickId, email, endPoint }) {
 
         <!-- Footer -->
         <div class="bg-gray-800 text-gray-400 p-6 text-center text-sm">
-            <p class="mb-2">© 2025 QuickForm. Todos os direitos reservados.</p>
+            <p class="mb-2">© 2025 EaseForm. Todos os direitos reservados.</p>
             <p class="text-xs">Este é um registro automático, por favor não responda.</p>
         </div>
     </div>
@@ -198,7 +198,7 @@ export function registerHtml({ quickId, email, endPoint }) {
         // Simulação dinâmica (troque por dados server-side se necessário)
         const params = new URLSearchParams(window.location.search);
         document.getElementById("email").textContent = params.get("email") || "não informado";
-        document.getElementById("quickId").textContent = params.get("quickId") || "não informado";
+        document.getElementById("easeId").textContent = params.get("easeId") || "não informado";
     </script>
 </body>
 

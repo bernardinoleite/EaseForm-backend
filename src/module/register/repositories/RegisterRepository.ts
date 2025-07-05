@@ -15,8 +15,8 @@ class RegisterRepository {
         return await Register.findOne({ email });
     }
 
-    async findByQuickId(quickId: string) {
-        return await Register.findOne({ quickId });
+    async findByeaseId(easeId: string) {
+        return await Register.findOne({ easeId });
     }
 
     async listAll() {

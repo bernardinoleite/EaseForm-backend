@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 import { randomUUID } from "node:crypto";
 
 const registerSchema = new Schema({
-    quickId: {
+    easeId: {
         type: String,
         unique: true,
         trim: true,
@@ -24,10 +24,10 @@ const registerSchema = new Schema({
     timestamps: true
 });
 
-// Gera quickId automaticamente antes de salvar, se não estiver definido
+// Gera easeId automaticamente antes de salvar, se não estiver definido
 registerSchema.pre("save", function (next) {
-    if (!this.quickId) {
-        this.quickId = randomUUID();
+    if (!this.easeId) {
+        this.easeId = randomUUID();
     }
     next();
 });
