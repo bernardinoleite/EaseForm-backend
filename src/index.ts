@@ -3,7 +3,9 @@ import cluster from "node:cluster";
 import process from "node:process"; // necessário para evitar erro com 'process' no TS
 
 const runPrimaryProcess = () => {
-    const processCount = os.cpus().length * 2;
+    // const processCount = os.cpus().length * 2;
+
+    const processCount = 3
     console.log("Primary", process.pid, "is running");
     console.log("Forking server with", processCount, "\n");
 
