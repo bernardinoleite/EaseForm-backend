@@ -76,131 +76,36 @@ export function fieldsHTML(body: any) {
     }).join("\n");
 }
 
-
 export function registerHtml({ easeId, email, endPoint }) {
-    return `<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Email Registrado com Sucesso | EaseForm</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        }
-
-        .header-divider {
-            height: 4px;
-            background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
-        }
-
-        .field-card {
-            transition: all 0.3s ease;
-        }
-
-        .field-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-                0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-    </style>
-</head>
-
-<body class="font-sans bg-gray-50">
-    <div class="max-w-2xl mx-auto my-8 bg-white rounded-xl overflow-hidden shadow-lg">
-        <!-- Header -->
-        <div class="gradient-bg text-white p-6">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <div class="bg-white bg-opacity-20 p-3 rounded-lg mr-4">
-                        <i class="fas fa-check text-xl"></i>
-                    </div>
-                    <h1 class="text-2xl font-bold">EaseForm</h1>
-                </div>
-                <div class="text-white bg-black bg-opacity-20 px-3 py-1 rounded-full text-sm font-medium">
-                    <i class="fas fa-user-check mr-1"></i> Registro de Email
-                </div>
-            </div>
-        </div>
-        <div class="header-divider"></div>
-
-        <!-- Content -->
-        <div class="p-6">
-            <div class="flex items-center mb-6">
-                <div class="gradient-bg text-white p-3 rounded-lg mr-4">
-                    <i class="fas fa-envelope-open-text text-xl"></i>
-                </div>
-                <h2 class="text-2xl font-bold text-gray-800">📥 Email Registrado com Sucesso</h2>
-            </div>
-
-            <!-- Fields -->
-               <div class="mb-8 grid grid-cols-1 gap-4">
-                <div class="field-card bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <div class="flex items-start">
-                        <div class="gradient-bg text-white p-2 rounded-lg mr-3 flex-shrink-0">
-                            <i class="fas fa-envelope text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-700">Seu EndPoint</h3>
-                            <p class="text-gray-600" id="email">${endPoint}</p>
-                        </div>
-                    </div>
-                </div>
-
-            <div class="mb-8 grid grid-cols-1 gap-4">
-                <div class="field-card bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <div class="flex items-start">
-                        <div class="gradient-bg text-white p-2 rounded-lg mr-3 flex-shrink-0">
-                            <i class="fas fa-envelope text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-700">Email</h3>
-                            <p class="text-gray-600" id="email">${email}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="field-card bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <div class="flex items-start">
-                        <div class="gradient-bg text-white p-2 rounded-lg mr-3 flex-shrink-0">
-                            <i class="fas fa-key text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-700">${easeId}</h3>
-                            <p class="text-gray-600" id="easeId">carregando...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div class="gradient-bg text-white p-6 rounded-lg text-center">
-                <h3 class="text-xl font-bold mb-2">Bem-vindo ao EaseForm!</h3>
-                <p class="mb-4 opacity-90">Agora você pode usar este email para receber formulários.</p>
-                <a href="https://easeform.onrender.com"
-                    class="inline-block bg-white text-primary font-bold py-2 px-6 rounded-lg hover:bg-gray-100 transition">
-                    Ir para o Site
-                </a>
-            </div>
+    return `
+  <html lang="pt-BR">
+    <body style="font-family: sans-serif; background-color: #f9fafb; padding: 20px;">
+      <div style="max-width: 600px; margin: auto; background: white; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); overflow: hidden;">
+        
+        <div style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; padding: 24px;">
+          <h1 style="margin: 0; font-size: 24px;">EaseForm</h1>
+          <p style="margin: 4px 0 0;">Registro de Email</p>
         </div>
 
-        <!-- Footer -->
-        <div class="bg-gray-800 text-gray-400 p-6 text-center text-sm">
-            <p class="mb-2">© 2025 EaseForm. Todos os direitos reservados.</p>
-            <p class="text-xs">Este é um registro automático, por favor não responda.</p>
+        <div style="padding: 24px;">
+          <h2 style="color: #1f2937;">📥 Email Registrado com Sucesso</h2>
+
+          <p><strong>Seu EndPoint:</strong> ${endPoint}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>EaseId:</strong> ${easeId}</p>
+
+          <div style="margin-top: 24px; text-align: center;">
+            <a href="https://easeform.onrender.com" style="background-color: #6366f1; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">Ir para o site</a>
+          </div>
         </div>
-    </div>
 
-    <script>
-        // Simulação dinâmica (troque por dados server-side se necessário)
-        const params = new URLSearchParams(window.location.search);
-        document.getElementById("email").textContent = params.get("email") || "não informado";
-        document.getElementById("easeId").textContent = params.get("easeId") || "não informado";
-    </script>
-</body>
+        <div style="background: #1f2937; color: #9ca3af; padding: 16px; text-align: center; font-size: 12px;">
+          <p>© 2025 EaseForm. Todos os direitos reservados.</p>
+          <p>Este é um registro automático, por favor não responda.</p>
+        </div>
 
-</html>`
+      </div>
+    </body>
+  </html>
+  `;
 }
