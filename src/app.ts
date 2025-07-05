@@ -61,17 +61,19 @@ app.post("/:email", async (request, response) => {
 
     let redirect = request.get("referer");
 
-    const origin = request.get("referer") || request.get("origin") || "https://easeform.co";
+    const origin = request.get("referer") || request.get("origin") || "https://easeform.netlify.app";
 
     if (_next) {
         redirect = _next;
     }
 
+
     const html = returnHtml({ origin, fieldsHTML: fieldsHTML(body) });
+
 
     try {
         await mailTransport.sendMail({
-            from: `easeForm <${process.env.GMAIL_USER}>`,
+            from: `EaseForm <${process.env.GMAIL_USER}>`,
             to: email,
             subject: _subject || "📨 Novo envio de formulário",
             html,
