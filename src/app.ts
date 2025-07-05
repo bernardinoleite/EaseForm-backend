@@ -1,4 +1,6 @@
 import express, { Request, Response } from "express";
+import dotenv from "dotenv";
+
 import { mailTransport } from "./config/nodemailer";
 import { fieldsHTML, registerHtml, returnHtml } from "./util/utils";
 import { registerRepository } from "./module/register/repositories/RegisterRepository";
@@ -10,6 +12,7 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.resolve("src", "public")));
+dotenv.config();
 
 // Node.js Express
 app.get('/ping', (req, res) => {
