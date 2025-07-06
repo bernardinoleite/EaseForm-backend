@@ -11,11 +11,11 @@ class RegisterRepository {
         }
     }
 
-    async findByEmail(email: string) {
-        return await Register.findOne({ email });
+    async findByIdentifier(identifier: string) {
+        return await Register.findOne({ $or: [{ email: identifier }, { easeId: identifier }] });
     }
 
-    async findByeaseId(easeId: string) {
+    async findByEaseId(easeId: string) {
         return await Register.findOne({ easeId });
     }
 

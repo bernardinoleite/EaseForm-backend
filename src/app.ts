@@ -51,14 +51,14 @@ app.post("/register", async (request, response) => {
     }
 });
 
-app.post("/:email", async (request, response) => {
-    const { email } = request.params;
+app.post("/:identifier", async (request, response) => {
+    const { identifier } = request.params;
     const { _next, _subject, ...body } = request.body;
 
 
-    const AlreadyExistEmail = await registerRepository.findByEmail(email)
+    const AlreadyExistIdentifier = await registerRepository.findByIdentifier(identifier)
 
-    if (!AlreadyExistEmail) {
+    if (!AlreadyExistIdentifier) {
         return response.sendFile(path.resolve("src", "public", "emailRegister.html"));
     }
 
@@ -77,12 +77,12 @@ app.post("/:email", async (request, response) => {
     try {
         await mailTransport.sendMail({
             from: `EaseForm <${process.env.GMAIL_USER}>`,
-            to: email,
+            to: AlreadyExistIdentifier.email,
             subject: _subject || "📨 Novo envio de formulário",
             html,
         });
 
-        console.log("✅ Email enviado para:", email);
+        console.log("✅ Email enviado para:", AlreadyExistIdentifier.email);
 
         response.redirect(`${redirect}?success=true`);
 
